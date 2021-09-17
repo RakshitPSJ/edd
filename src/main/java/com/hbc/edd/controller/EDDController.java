@@ -11,7 +11,7 @@ public class EDDController {
 
     @GetMapping("")
     public ResponseEntity<String> getEdd() {
-        return ResponseEntity.ok().body("Hello world");
+        return ResponseEntity.ok().body("Hello world this is new image ");
     }
 
 }
