@@ -8,9 +8,8 @@ FROM maven:3.5-jdk-8-alpine as build
 WORKDIR /app
 COPY --from=clone /app/edd /app
 
-# Creating jar file of project by doing install build stage of maven
-RUN mvn install -DskipTests
-
+ # Creating jar file of project by doing install build stage of maven
+RUN mvn install
 
 # ADDING JDK TO PROJECT AND COPYING JAR FILE WHICH CREATED WHILE BUILDING PROJECT AND
 FROM openjdk:8-jre-alpine
