@@ -28,7 +28,7 @@ public class EDDController {
         return ResponseEntity.ok(orderDTO);
     }
 
-    private OrderDTO createOrderDTO(){
+    private OrderDTO createOrderDTO() {
         OrderDTO order = new OrderDTO();
         return order;
     }
