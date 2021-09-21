@@ -1,4 +1,4 @@
-package com.hbc.edd.config;
+package com.hbc.edd.eddService.config;
 
 
 import org.springframework.context.annotation.Bean;

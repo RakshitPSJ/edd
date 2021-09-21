@@ -1,4 +1,4 @@
-package com.hbc.edd.model;
+package com.hbc.edd.eddService.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

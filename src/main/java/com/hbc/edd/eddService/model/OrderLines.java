@@ -1,4 +1,4 @@
-package com.hbc.edd.model;
+package com.hbc.edd.eddService.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,11 +7,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Assignments {
-    private List<Assignment> assignment;
+public class OrderLines {
+    private List<OrderLine> orderLine;
 }

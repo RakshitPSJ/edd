@@ -1,8 +1,8 @@
-package com.hbc.edd.controller;
+package com.hbc.edd.eddService.controller;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.hbc.edd.model.Order;
+import com.hbc.edd.eddService.model.Order;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;

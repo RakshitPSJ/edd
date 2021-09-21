@@ -1,7 +1,7 @@
-package com.hbc.edd.controller;
+package com.hbc.edd.eddService.controller;
 
-import com.hbc.edd.model.Order;
-import com.hbc.edd.model.OrderDTO;
+import com.hbc.edd.eddService.model.Order;
+import com.hbc.edd.eddService.model.OrderDTO;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
