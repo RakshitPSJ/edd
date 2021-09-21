@@ -1,5 +1,8 @@
 package com.hbc.edd.eddService.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.common.base.Strings;
+import com.hbc.edd.eddService.exception.InvalidRequest;
 import com.hbc.edd.eddService.model.Order;
 import com.hbc.edd.eddService.model.OrderDTO;
 import io.swagger.annotations.ApiOperation;
@@ -24,12 +27,23 @@ public class EDDController {
     @ApiOperation(value = "Get EDD")
     public ResponseEntity<OrderDTO> getEDD(
             @RequestBody Order order) {
-        OrderDTO orderDTO = createOrderDTO();
+        OrderDTO orderDTO = createOrderDTO(order);
         return ResponseEntity.ok(orderDTO);
     }
 
-    private OrderDTO createOrderDTO() {
-        OrderDTO order = new OrderDTO();
-        return order;
+    private OrderDTO createOrderDTO(Order order) {
+        OrderDTO orderDTO;
+        orderDTO = new OrderDTO();
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        if (order.getOrderLines() == null
+                || Strings.isNullOrEmpty(order.getBasketId())
+                || Strings.isNullOrEmpty(order.getOrganizationCode())
+                || Strings.isNullOrEmpty(order.getBasketId())) {
+            throw new InvalidRequest("Required fields are missing.");
+        }
+
+//        Car car = objectMapper.readValue(order.getOrderLines(), Car.class);
+        return orderDTO;
     }
 }
