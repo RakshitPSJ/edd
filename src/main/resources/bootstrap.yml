@@ -6,3 +6,6 @@ server:
 spring:
   application:
     name: edd-service
+  cloud:
+    config:
+      enabled: false
