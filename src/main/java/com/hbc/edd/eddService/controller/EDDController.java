@@ -40,6 +40,7 @@ public class EDDController {
                 || Strings.isNullOrEmpty(order.getBasketId())
                 || Strings.isNullOrEmpty(order.getOrganizationCode())
                 || Strings.isNullOrEmpty(order.getBasketId())) {
+            
             throw new InvalidRequest("Required fields are missing.");
         }
 
