@@ -1,4 +1,4 @@
-package com.hbc.edd.eddService.config;
+package com.hbc.edd.config;
 
 
 import org.springframework.context.annotation.Bean;
@@ -25,7 +25,7 @@ public class SwaggerConfig {
                 .securityContexts(Arrays.asList(securityContext()))
                 .securitySchemes(Collections.singletonList(apikey()))
                 .select()
-                .apis(RequestHandlerSelectors.any())
+                .apis(RequestHandlerSelectors.basePackage("com.hbc.edd"))
                 .paths(PathSelectors.any())
                 .build();
     }
