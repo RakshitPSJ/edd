@@ -1,15 +1,17 @@
 package com.hbc.edd.eddService.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.common.base.Strings;
-import com.hbc.edd.eddService.exception.InvalidRequest;
-import com.hbc.edd.eddService.model.Order;
-import com.hbc.edd.eddService.model.OrderDTO;
+import com.hbc.edd.eddService.model.*;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 @RestController
 @EnableSwagger2
@@ -26,24 +28,32 @@ public class EDDController {
     @PostMapping("/create-edd")
     @ApiOperation(value = "Get EDD")
     public ResponseEntity<OrderDTO> getEDD(
-            @RequestBody Order order) {
+            @RequestBody Order order) throws JsonProcessingException {
         OrderDTO orderDTO = createOrderDTO(order);
         return ResponseEntity.ok(orderDTO);
     }
 
-    private OrderDTO createOrderDTO(Order order) {
-        OrderDTO orderDTO;
-        orderDTO = new OrderDTO();
+    private OrderDTO createOrderDTO(Order order) throws JsonProcessingException {
         ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+        String orderStr = objectMapper.writeValueAsString(order);
+        OrderDTO orderNewDTO = objectMapper.readValue(orderStr, OrderDTO.class);
+        orderNewDTO.setAssignments(this.createAssignments());
+        orderNewDTO.getOrderLines().getOrderLine().forEach(orderLineDTO -> orderLineDTO.setAssignments(createAssignments()));
+        return orderNewDTO;
+    }
 
-        if (order.getOrderLines() == null
-                || Strings.isNullOrEmpty(order.getBasketId())
-                || Strings.isNullOrEmpty(order.getOrganizationCode())
-                || Strings.isNullOrEmpty(order.getBasketId())) {
-            throw new InvalidRequest("Required fields are missing.");
-        }
-
-//        Car car = objectMapper.readValue(order.getOrderLines(), Car.class);
-        return orderDTO;
+    private Assignments createAssignments() {
+        Assignments assignments = new Assignments();
+        Assignment assignment = new Assignment();
+        ArrayList<Assignment> assignmentList = new ArrayList<>();
+        assignment.setAvailableQty(10L);
+        assignment.setEstimatedDeliveryEndDate(LocalDateTime.now());
+        assignment.setEstimatedDeliveryEndDate(LocalDateTime.now());
+        assignment.setShipNode("NODE123");
+        assignment.setLevelOfService("2");
+        assignmentList.add(assignment);
+        assignments.setAssignment(assignmentList);
+        return assignments;
     }
 }
