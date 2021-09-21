@@ -49,7 +49,7 @@ public class EDDController {
         ArrayList<Assignment> assignmentList = new ArrayList<>();
         assignment.setAvailableQty(10L);
         assignment.setEstimatedDeliveryEndDate(LocalDateTime.now());
-        assignment.setEstimatedDeliveryEndDate(LocalDateTime.now());
+        assignment.setEstmatedDeliveryStartDate(LocalDateTime.now());
         assignment.setShipNode("NODE123");
         assignment.setLevelOfService("2");
         assignmentList.add(assignment);
