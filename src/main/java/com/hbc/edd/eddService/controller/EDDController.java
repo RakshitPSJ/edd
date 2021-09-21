@@ -20,7 +20,7 @@ public class EDDController {
         return ResponseEntity.ok().body("Hello world this is new image ");
     }
 
-    @PostMapping("/getEDD")
+    @PostMapping("/create-edd")
     @ApiOperation(value = "Get EDD")
     public ResponseEntity<OrderDTO> getEDD(
             @RequestBody Order order) {
