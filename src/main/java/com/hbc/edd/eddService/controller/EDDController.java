@@ -20,7 +20,7 @@ public class EDDController {
         return ResponseEntity.ok().body("Hello world this is new image ");
     }
 
-    @PostMapping("/getEDD")
+    @PostMapping("/create-edd")
     @ApiOperation(value = "Get EDD")
     public ResponseEntity<OrderDTO> getEDD(
             @RequestBody Order order) {
@@ -28,7 +28,7 @@ public class EDDController {
         return ResponseEntity.ok(orderDTO);
     }
 
-    private OrderDTO createOrderDTO(){
+    private OrderDTO createOrderDTO() {
         OrderDTO order = new OrderDTO();
         return order;
     }

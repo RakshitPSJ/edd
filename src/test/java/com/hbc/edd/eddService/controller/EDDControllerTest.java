@@ -44,7 +44,7 @@ public class EDDControllerTest {
     @DisplayName("Get EDD")
     public void getEDD() throws Exception {
         Order order = new Order();
-        mockMvc.perform(post("http://localhost:8080/api/v1/getEDD")
+        mockMvc.perform(post("http://localhost:8080/api/v1/create-edd")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(mapper.writeValueAsString(order)))
                 .andExpect(status().isOk());
