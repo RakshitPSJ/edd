@@ -17,7 +17,7 @@ stages:
 jobs:
   include:
     - stage: tests             # naming the Tests stage
-      script: mvn test
+      script: mvnw  test
     - stage: build
-      script: mvn install
+      script: mvnw  install
 
