@@ -3,6 +3,8 @@ os: linux
 dist: trusty
 jdk:
   - oraclejdk8
+before_install:
+  - chmod +x mvnw
 
 branches:
   only:
