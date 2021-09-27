@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class OrderLine {
     private String fulFillmentType;
-    private String leaveOfService;
+    private String levelOfService;
     private String deliveryMethod;
     private String carrierServiceCode;
     private String lineId;
