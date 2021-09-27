@@ -24,6 +24,7 @@ public class EDDController {
     @ApiOperation(value = "Get EDD")
     public ResponseEntity<OrderDTO> getEDD(
             @RequestBody Order order) {
+        
         OrderDTO orderDTO = createOrderDTO();
         return ResponseEntity.ok(orderDTO);
     }
